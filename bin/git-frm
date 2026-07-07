@@ -1,0 +1,21 @@
+#!/bin/sh
+
+remote="${1:-origin}"
+
+git fetch "$remote" || exit
+
+branch=$(git symbolic-ref --quiet --short "refs/remotes/$remote/HEAD" 2>/dev/null || true)
+branch=${branch#"$remote/"}
+
+if [ -z "$branch" ]; then
+	git remote set-head "$remote" --auto >/dev/null 2>&1 || true
+	branch=$(git symbolic-ref --quiet --short "refs/remotes/$remote/HEAD" 2>/dev/null || true)
+	branch=${branch#"$remote/"}
+fi
+
+if [ -z "$branch" ]; then
+	echo "Unable to determine default branch for $remote." >&2
+	exit 1
+fi
+
+git reset --hard "$remote/$branch"
