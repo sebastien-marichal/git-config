@@ -1,0 +1,89 @@
+[core]
+	editor = code --wait
+	autocrlf = false
+	longpaths = true
+	excludesFile = ~/.gitignore_global
+[init]
+	defaultBranch = main
+[merge]
+	renameLimit = 10000
+	guitool = vscode
+	conflictStyle = zdiff3
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[column]
+	ui = auto
+[color]
+	ui = auto
+[push]
+	default = current
+	autoSetupRemote = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[rerere]
+	enabled = 1
+[log]
+	date = relative
+[web]
+	browser = island
+[alias]
+	st = status --short --branch
+	sb = status --short --branch
+	d = diff
+	ds = diff --staged
+	dw = diff --word-diff
+	br = branch --sort=-committerdate
+	ba = branch --all --sort=-committerdate
+	tags = tag --sort=version:refname
+	last = log -1 HEAD --stat
+	l = log --graph --decorate --date=relative --format=format:'%C(auto)%h%Creset %C(yellow)%d%Creset %s %C(green)(%cr)%Creset %C(bold blue)<%an>%Creset'
+	who = shortlog --summary --numbered --email
+	ignored = status --short --ignored
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	pushu = push -u origin HEAD
+	cl = clean -fdx --exclude=.idea/
+	clr = !git-clr
+	c = commit --all -m
+	cae = commit --amend --no-edit
+	s = switch
+	sc = !git-sc
+	pf = pull --ff-only
+	pff = pull --ff-only
+	ca = commit --amend -m
+	frm = !git-frm
+	r = !git fetch && git pull --rebase
+	review = !git fetch && git s
+	debug = !echo
+	co = "!gh co "
+	ui = !gitui
+[pull]
+	rebase = false
+[fetch]
+	prune = false
+	writeCommitGraph = true
+[rebase]
+	autoStash = false
+	autosquash = false
+	updateRefs = false
+[diff]
+	guitool = vscode
+	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[mergetool "vscode"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+	verbose = true
+[include]
+	path = ~/.gitconfig.local

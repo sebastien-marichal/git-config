@@ -1,0 +1,17 @@
+#!/bin/sh
+
+dir=$PWD
+
+while [ "$dir" != "/" ]; do
+	if [ -d "$dir/.git" ]; then
+		echo "Cleaning from $dir..."
+		cd "$dir" || exit
+		git cl
+		exit
+	fi
+
+	dir=$(dirname "$dir")
+done
+
+echo "No .git directory found in any parent directories." >&2
+exit 1
