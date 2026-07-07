@@ -8,8 +8,14 @@ fi
 branch=$1
 shift
 
+remote="${GIT_SC_REMOTE:-origin}"
+
+git fetch --prune "$remote" || exit
+
 if git show-ref --verify --quiet "refs/heads/$branch"; then
 	git switch "$branch"
+elif [ "$#" -eq 0 ] && git show-ref --verify --quiet "refs/remotes/$remote/$branch"; then
+	git switch --track "$remote/$branch"
 else
 	git switch -c "$branch" "$@"
 fi
