@@ -33,19 +33,16 @@
 	browser = island
 [alias]
 	st = status --short --branch
-	sb = status --short --branch
 	d = diff
 	ds = diff --staged
 	dw = diff --word-diff
-	br = branch --sort=-committerdate
-	ba = branch --all --sort=-committerdate
-	tags = tag --sort=version:refname
+	br = branch
+	ba = branch --all
 	last = log -1 HEAD --stat
-	l = log --graph --decorate --date=relative --format=format:'%C(auto)%h%Creset %C(yellow)%d%Creset %s %C(green)(%cr)%Creset %C(bold blue)<%an>%Creset'
+	l = !git-l
 	who = shortlog --summary --numbered --email
 	ignored = status --short --ignored
 	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
-	pushu = push -u origin HEAD
 	cl = clean -fdx --exclude=.idea/
 	clr = !git-clr
 	c = commit --all -m
@@ -56,10 +53,9 @@
 	pff = pull --ff-only
 	ca = commit --amend -m
 	frm = !git-frm
+	rbm = !git-rbm
 	r = !git fetch && git pull --rebase
-	review = !git fetch && git s
-	debug = !echo
-	co = "!gh co "
+	co = !gh pr checkout
 	ui = !gitui
 [pull]
 	rebase = false

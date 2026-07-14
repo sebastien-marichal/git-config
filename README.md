@@ -8,6 +8,7 @@ Personal Git configuration tracked as a small repository.
 - `.gitignore_global`: global ignore file referenced by `.gitconfig`.
 - `bin/git-clr`: helper script for the `git clr` alias.
 - `bin/git-frm`: helper script for the `git frm` alias.
+- `bin/git-l`: helper script for the `git l` alias.
 - `bin/git-rbm`: helper command to rebase on the remote default branch.
 - `bin/git-sc`: helper script for the `git sc` alias.
 - `~/.gitconfig.local`: untracked local overrides for personal identity and machine-specific paths.
@@ -31,7 +32,7 @@ mv "$HOME/.gitignore_global" "$HOME/.gitignore_global.backup"
 
 Then create the symlinks.
 
-The `git clr`, `git frm`, `git rbm`, and `git sc` commands call helper scripts from `PATH`. Add this repository's `bin` directory to your shell startup file so script changes are used directly from the checkout.
+The `git clr`, `git frm`, `git l`, `git rbm`, and `git sc` commands call helper scripts from `PATH`. Add this repository's `bin` directory to your shell startup file so script changes are used directly from the checkout.
 
 For Fish:
 
