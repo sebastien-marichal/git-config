@@ -46,6 +46,7 @@
 	cl = clean -fdx --exclude=.idea/
 	clr = !git-clr
 	c = commit --all -m
+	cprd = !gh cprd
 	cae = commit --amend --no-edit
 	s = switch
 	sc = !git-sc
@@ -56,6 +57,7 @@
 	frm = !git-frm
 	rbm = !git-rbm
 	r = !git fetch && git pull --rebase
+	rc = !GIT_EDITOR=true git rebase --continue
 	co = !gh pr checkout
 	ui = !gitui
 [pull]
@@ -80,7 +82,7 @@
 [gpg]
 	format = ssh
 [commit]
-	gpgsign = true
+	gpgsign = false
 	verbose = true
 [include]
 	path = ~/.gitconfig.local
